@@ -1,0 +1,34 @@
+.searchbar {
+  width: 100%;
+  height: 32px;
+}
+
+.searchbar-container {
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+  gap: 8px;
+  border: 1px solid red;
+  border-radius: 8px;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.searchbar-icon {
+  height: 100%;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+.searchbar-container__input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin-right: 8px;
+}
