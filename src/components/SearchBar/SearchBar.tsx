@@ -7,7 +7,7 @@ function SearchBar() {
   return (
     <form className='searchbar'>
       <div className='searchbar-container'>
-        <Search size='24' className='searchbar-icon' />
+        <Search size='16' className='searchbar-icon' />
         <input
           className='searchbar-container__input'
           type='search'
