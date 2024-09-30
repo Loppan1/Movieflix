@@ -1,34 +1,34 @@
-
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import './index.css'
+import './index.css';
 import Home from './pages/home.tsx';
 import Categories from './pages/categories.tsx';
-import MovieView from './pages/movie-view.tsx';
+import MovieView from './pages/movieView.tsx';
 import Bookmarks from './pages/bookmarks.tsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />
+    element: <Home />,
   },
   {
     path: '/categories',
-    element: <Categories />
+    element: <Categories />,
   },
   {
     path: '/bookmarks',
-    element: <Bookmarks />
+    element: <Bookmarks />,
   },
-  { 
+  {
     path: '/movieview/:movieid',
-    element: <MovieView />
-  }
+    element: <MovieView />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>);
+  </React.StrictMode>
+);

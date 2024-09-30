@@ -1,0 +1,13 @@
+.button-universal {
+  padding: 8px 16px;
+  background-color: transparent;
+  color: white;
+  border: 1px solid red;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.button-universal:hover {
+  border: 1px solid grey;
+}
