@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import './index.css'
 import Home from './pages/home.tsx';
-import Category from './pages/category.tsx';
+import Categories from './pages/categories.tsx';
 import MovieView from './pages/movie-view.tsx';
 import Bookmarks from './pages/bookmarks.tsx';
 
@@ -15,8 +15,8 @@ const router = createBrowserRouter([
     element: <Home />
   },
   {
-    path: '/category',
-    element: <Category />
+    path: '/categories',
+    element: <Categories />
   },
   {
     path: '/bookmarks',
