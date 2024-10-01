@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './categories.css'; 
-import movies from '../../movies.json'; 
+import movies from '../assets/movies.json'; 
 import SearchBar from '../components/SearchBar/SearchBar'; 
 
 interface MovieModalProps {
