@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import './categories.css'; 
 import movies from '../assets/movies.json'; 
 import SearchBar from '../components/SearchBar/SearchBar'; 
-
+import Footer from "../components/Footer/Footer";
+import NavBar from "../components/NavBar/NavBar";
 interface MovieModalProps {
   movie: {
     title: string;
@@ -114,13 +115,16 @@ const Categories = () => {
 
   return (
     <main>
+        <NavBar/>
+        <SearchBar setSearchQuery={setSearchQuery} />
       <h1>Categories</h1>
-      <SearchBar setSearchQuery={setSearchQuery} />
+      
       <div className="categories-container">
         {Array.from(filteredMovies.keys()).map((genre) => (
           <GenreSection key={genre} genre={genre} movies={filteredMovies.get(genre) || []} />
         ))}
       </div>
+      <Footer />
     </main>
   );
 };
