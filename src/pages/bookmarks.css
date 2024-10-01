@@ -1,0 +1,34 @@
+.bookmarks-card {
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    margin: 22px 12px;
+
+    & button {
+        margin-left: auto;
+    }
+}
+
+.bookmarks-card__img {
+    height: 100%;
+    margin-right: 18px;
+}
+
+.bookmarks-card__title {
+    margin: 0;
+}
+
+.bookmarks-card__pair {
+    display: flex;
+    gap: 18px;
+    
+}
+.bookmarks-card__release {
+    font-size: 1rem;
+}
+
+.bookmarks-card__rating {
+    font-size: 1rem;
+    
+}
