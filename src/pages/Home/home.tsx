@@ -6,11 +6,11 @@ const Home = () => {
     <>
       <section className='home-page'>
         <NavBar />
-        <div className='home-page__main'>
-          <h1>Home</h1>{' '}
-        </div>
+        <main className='home-page__main'>
+          <h1>Home</h1>
+        </main>
+        <Footer />
       </section>
-      <Footer />
     </>
   );
 };
