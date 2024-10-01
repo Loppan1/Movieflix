@@ -37,11 +37,6 @@
   background-color: rgba(0, 123, 255, 1);
 }
 
-.carousel .control-prev.control-arrow:before {
-  height: 15px;
-  width: 20px;
-}
-
 @media (max-width: 430px) {
   .legend_container {
     font-size: 0.8rem;
