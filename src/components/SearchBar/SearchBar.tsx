@@ -3,7 +3,8 @@ import './SearchBar.css';
 import React from 'react';
 
 function SearchBar() {
-  const [value, setValue] = React.useState('');
+  const [value, setValue] = React.useState<string>('');
+
   return (
     <form className='searchbar'>
       <div className='searchbar-container'>
