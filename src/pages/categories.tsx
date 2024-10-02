@@ -4,6 +4,7 @@ import movies from '../assets/movies.json';
 import SearchBar from '../components/SearchBar/SearchBar'; 
 import Footer from "../components/Footer/Footer";
 import NavBar from "../components/NavBar/NavBar";
+
 interface MovieModalProps {
   movie: {
     title: string;
