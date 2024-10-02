@@ -1,0 +1,29 @@
+.movies-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 20px;
+  padding: 10px;
+}
+
+.movie-card {
+  padding: 15px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.movie-card img {
+  width: 100%;
+  height: auto;
+}
+
+.movie-details {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+@media (max-width: 768px) {
+  .movies-list {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
