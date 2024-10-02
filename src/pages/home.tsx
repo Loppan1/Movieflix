@@ -18,12 +18,18 @@ interface Movie {
 
 const Home = () => {
   const [trending, setTrending] = useState<Movie[]>([]);
+  const [recommended, setRecommended] = useState<Movie[]>([]);
 
   useEffect(() => {
     const trendingMovies: Movie[] = movies.filter(
       (movie) => movie.isTrending === true
     );
     setTrending(trendingMovies);
+    const recommendedMovies: Movie[] = movies.filter(
+      (movie) => movie.isTrending !== true
+    ).slice(0, 5); 
+
+    setRecommended(recommendedMovies);
   }, []);
 
   return (
@@ -32,9 +38,11 @@ const Home = () => {
         <NavBar />
         <main className="home-page__main">
           <h1>Trending</h1>
-        </main>
+        
         <Carousal movies={trending} />
-
+        <h1>Recommended for You</h1>
+          <Carousal movies={recommended} />
+          </main>
         <Footer />
       </section>
     </>
