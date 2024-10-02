@@ -10,6 +10,17 @@
     }
 }
 
+.bookmarks-card__link {
+    display: flex;
+    height: 100%;
+    color: #fff;
+    text-decoration: none;
+
+    & :hover {
+        color: gray;
+    }
+}
+
 .bookmarks-card__img {
     height: 100%;
     margin-right: 18px;
@@ -22,13 +33,12 @@
 .bookmarks-card__pair {
     display: flex;
     gap: 18px;
-    
 }
+
 .bookmarks-card__release {
     font-size: 1rem;
 }
 
 .bookmarks-card__rating {
     font-size: 1rem;
-    
 }
