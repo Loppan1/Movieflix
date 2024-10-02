@@ -1,41 +1,7 @@
-import React, { useState } from 'react';
 import './categories.css'; 
 import movies from '../assets/movies.json'; 
-import SearchBar from '../components/SearchBar/SearchBar'; 
 import Footer from "../components/Footer/Footer";
 import NavBar from "../components/NavBar/NavBar";
-interface MovieModalProps {
-  movie: {
-    title: string;
-    year: number;
-    rating: string;
-    actors: string[];
-    genre: string;
-    synopsis: string;
-    thumbnail: string;
-  };
-  onClose: () => void;
-}
-
-const MovieModal = ({ movie, onClose }: MovieModalProps) => {
-  return (
-    <aside className="modal-backdrop">
-      <article className="modal-content">
-        <button className="close-btn" onClick={onClose}>X</button>
-        <header>
-          <h2>{movie.title}</h2>
-        </header>
-        <section>
-          <p><strong>Year:</strong> {movie.year}</p>
-          <p><strong>Rating:</strong> {movie.rating}</p>
-          <p><strong>Actors:</strong> {movie.actors.join(', ')}</p>
-          <p><strong>Genre:</strong> {movie.genre}</p>
-          <p><strong>Description:</strong> {movie.synopsis}</p>
-        </section>
-      </article>
-    </aside>
-  );
-};
 
 interface Movie {
   title: string;
@@ -65,21 +31,15 @@ const categorizeMoviesByGenre = (movies: Movie[]): Map<string, Movie[]> => {
 };
 
 const MovieCard = ({ movie }: { movie: Movie }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
-
   return (
     <article>
-      <div className="movie-card" onClick={openModal}>
+      <div className="movie-card">
         <img src={movie.thumbnail} alt={`${movie.title} thumbnail`} />
-        <header>
-          <h3>{movie.title}</h3>
-        </header>
-        <p>{movie.year}</p>
+        <div className="movie-details">
+          <p><strong>Year:</strong> {movie.year}</p>
+          <p><strong>Rating:</strong> {movie.rating}</p>
+        </div>
       </div>
-      {isModalOpen && <MovieModal movie={movie} onClose={closeModal} />}
     </article>
   );
 };
@@ -100,28 +60,15 @@ const GenreSection = ({ genre, movies }: { genre: string; movies: Movie[] }) => 
 };
 
 const Categories = () => {
-  const [searchQuery, setSearchQuery] = useState<string>(''); 
   const categorizedMovies = categorizeMoviesByGenre(movies);
-
-  const filteredMovies = Array.from(categorizedMovies.entries()).reduce((acc, [genre, movies]) => {
-    const filtered = movies.filter((movie) =>
-      movie.title.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    if (filtered.length > 0) {
-      acc.set(genre, filtered);
-    }
-    return acc;
-  }, new Map<string, Movie[]>());
 
   return (
     <main>
-        <NavBar/>
-        <SearchBar setSearchQuery={setSearchQuery} />
+      <NavBar />
       <h1>Categories</h1>
-      
       <div className="categories-container">
-        {Array.from(filteredMovies.keys()).map((genre) => (
-          <GenreSection key={genre} genre={genre} movies={filteredMovies.get(genre) || []} />
+        {Array.from(categorizedMovies.keys()).map((genre) => (
+          <GenreSection key={genre} genre={genre} movies={categorizedMovies.get(genre) || []} />
         ))}
       </div>
       <Footer />
