@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './categories.css'; 
 import movies from '../assets/movies.json'; 
 import Footer from "../components/Footer/Footer";
@@ -44,33 +45,74 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
   );
 };
 
-const GenreSection = ({ genre, movies }: { genre: string; movies: Movie[] }) => {
+const MovieList = ({ movies }: { movies: Movie[] }) => {
   return (
-    <section className="genre-section">
-      <header>
-        <h2>{genre}</h2>
-      </header>
-      <div className="movies-list">
-        {movies.map((movie) => (
-          <MovieCard key={movie.title} movie={movie} />
-        ))}
-      </div>
-    </section>
+    <div className="movies-list">
+      {movies.map((movie) => (
+        <MovieCard key={movie.title} movie={movie} />
+      ))}
+    </div>
+  );
+};
+
+const BurgerMenu = ({ genres, onSelectGenre }: { genres: string[], onSelectGenre: (genre: string) => void }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <div className="burger-menu">
+      <button className="burger-button" onClick={toggleMenu}>
+        &#9776;
+      </button>
+      {isOpen && (
+        <div className="burger-dropdown">
+          <ul>
+            <li onClick={() => onSelectGenre('All')}>All</li>
+            {genres.map((genre) => (
+              <li key={genre} onClick={() => onSelectGenre(genre)}>
+                {genre}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
   );
 };
 
 const Categories = () => {
   const categorizedMovies = categorizeMoviesByGenre(movies);
+  const genres = Array.from(categorizedMovies.keys());
+  const [selectedGenre, setSelectedGenre] = useState<string>('All');
+
+  const handleSelectGenre = (genre: string) => {
+    setSelectedGenre(genre);
+  };
+
+  const filteredMovies = selectedGenre === 'All' 
+    ? movies 
+    : categorizedMovies.get(selectedGenre) || [];
 
   return (
     <main>
       <NavBar />
-      <h1>Categories</h1>
-      <div className="categories-container">
-        {Array.from(categorizedMovies.keys()).map((genre) => (
-          <GenreSection key={genre} genre={genre} movies={categorizedMovies.get(genre) || []} />
-        ))}
+      
+      <div className="categories-header">
+        <h1>Categories</h1>
+        <BurgerMenu genres={genres} onSelectGenre={handleSelectGenre} />
       </div>
+      
+      
+      <h2>{selectedGenre === 'All' ? 'All Movies' : selectedGenre}</h2>
+      
+      
+      <div className="movies-container">
+        <MovieList movies={filteredMovies} />
+      </div>
+      
       <Footer />
     </main>
   );
