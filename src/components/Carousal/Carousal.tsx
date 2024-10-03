@@ -1,6 +1,7 @@
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
-import "./Carousal.css";
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { Carousel } from 'react-responsive-carousel';
+import './Carousal.css';
+import { Link } from 'react-router-dom';
 
 interface Movie {
   title: string;
@@ -19,7 +20,7 @@ interface CarousalProps {
 
 function Carousal({ movies }: CarousalProps) {
   return (
-    <div className="carousel-container">
+    <div className='carousel-container'>
       <Carousel
         showArrows={true}
         autoPlay={false}
@@ -31,13 +32,15 @@ function Carousal({ movies }: CarousalProps) {
         showStatus={false}
       >
         {movies.map((movie) => (
-          <div className="movie_container" key={movie.title}>
-            <img src={movie.thumbnail} alt={movie.title} />
-            <div className="legend_container">
-              <p>{movie.title}</p>
-              <p>{movie.year}</p>
+          <Link to={`/movieview/${movie.title}`} key={movie.title}>
+            <div className='movie_container' key={movie.title}>
+              <img src={movie.thumbnail} alt={movie.title} />
+              <div className='legend_container'>
+                <p>{movie.title}</p>
+                <p>{movie.year}</p>
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
       </Carousel>
     </div>
