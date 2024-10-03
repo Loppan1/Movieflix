@@ -1,29 +1,124 @@
-.movies-list {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); 
-  gap: 20px;
-  padding: 10px;
+.categories-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.burger-menu {
+  position: relative;
+}
+
+.burger-button {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+ 
+}
+
+.burger-dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: rgb(185, 172, 172);
+  border: 1px solid #ccc;
+  
+  z-index: 1000;
+}
+
+.burger-dropdown ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.burger-dropdown ul li {
+  padding: 10px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.burger-dropdown ul li:hover {
+  background-color: #b9b2b2;
 }
 
 .movie-card {
-  padding: 15px;
-  border: 1px solid #ddd;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+ 
 }
 
 .movie-card img {
-  width: 100%;
-  height: auto;
+  max-width: 150px;
+  border-radius: 8px;
 }
 
 .movie-details {
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
+  width: 100%;
+  padding: 10px;
 }
 
-@media (max-width: 768px) {
+.movies-container {
+  margin-top: 20px;
+}
+
+.movies-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+@media (min-width: 768px) {
+  .categories-header {
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .burger-menu {
+    display: block;
+  }
+  
   .movies-list {
-    grid-template-columns: repeat(2, 1fr); 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .movie-card {
+    width: 200px;
+  }
+}
+
+@media (max-width: 767px) {
+  .categories-header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .burger-button {
+    font-size: 28px;
+  }
+
+  .movies-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+
+  .movie-card img {
+    max-width: 100%;
+  }
+
+  .movie-card {
+    width: 100%;
   }
 }
