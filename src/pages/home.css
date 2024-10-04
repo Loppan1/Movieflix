@@ -1,9 +1,34 @@
 .home-page {
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .home-page__main {
-  width: 100%;
-  padding: 0 1rem;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+ h1 {
+  font-size: 2rem;
+  text-align: left;
+}
+.trending-carousal {
+  margin-bottom: 50px; /* Increase to create more space below the movie name */
+}
+
+
+@media only screen and (max-width: 768px) {
+  .home-page {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .home-page__main {
+    width: 100%;
+  }
+
 }
