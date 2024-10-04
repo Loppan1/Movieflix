@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
 }
-.movie-view-container {
+.movie-view-section {
   display: flex;
   flex-direction: column;
   margin-top: 32px;
@@ -41,4 +41,24 @@ h1 {
 
 .movie-details-container strong {
   font-size: 22px;
+}
+
+@media (max-width: 768px) {
+  .movieview-container {
+    flex-direction: column;
+    align-self: center;
+  }
+
+  .movie-thumbnail {
+    width: 100%;
+  }
+
+  .movie-details-container {
+    padding-left: 0;
+  }
+  .movie-view-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }

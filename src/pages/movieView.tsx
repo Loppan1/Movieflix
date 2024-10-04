@@ -19,7 +19,7 @@ function movieView() {
       <section className='media-view-page'>
         <NavBar />
 
-        <div className='movie-view-container'>
+        <div className='movie-view-section'>
           <h1>{movie.title}</h1>
 
           <aside className='movieview-container'>
