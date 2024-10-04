@@ -38,10 +38,12 @@ const Home = () => {
         <NavBar />
         <main className="home-page__main">
           <h1>Trending</h1>
-        
+          <div className="trending-carousal">
         <Carousal movies={trending} />
+
         <h1>Recommended for You</h1>
           <Carousal movies={recommended} />
+          </div>
           </main>
         <Footer />
       </section>
