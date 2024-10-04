@@ -13,7 +13,6 @@ const NavBar = () => {
         <Button to='/'>Home</Button>
         <Button to='/categories'>Categories</Button>
         <Button to='/bookmarks'>Bookmarks</Button>
-        <Button to='/movieview/:movieid'>MovieView"temp"</Button>
       </div>
       <div>
         <SearchBar />
