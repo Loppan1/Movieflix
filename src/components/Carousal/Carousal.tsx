@@ -2,6 +2,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import './Carousal.css';
 import { Link } from 'react-router-dom';
+import { handleImageError } from '../../utils';
 
 interface Movie {
   title: string;
@@ -34,7 +35,11 @@ function Carousal({ movies }: CarousalProps) {
         {movies.map((movie, i) => (
           <Link to={`/movieview/${movie.title}`} key={i}>
             <div className='movie_container' key={movie.title}>
-              <img src={movie.thumbnail} alt={movie.title} />
+              <img
+                src={movie.thumbnail}
+                alt={movie.title}
+                onError={handleImageError}
+              />
               <div className='legend_container'>
                 <p>{movie.title}</p>
                 <p>{movie.year}</p>
