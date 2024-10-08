@@ -36,7 +36,7 @@ const categorizeMoviesByGenre = (movies: Movie[]): Map<string, Movie[]> => {
 const MovieCard = ({ movie }: { movie: Movie }) => {
   return (
     <article>
-      <Link to={`/movieview/${movie.title}`}>
+      <Link to={`/movieview/${movie.title}`} className='categories-movie__link'>
         <div className='movie-card'>
           <img
             src={movie.thumbnail}
@@ -44,12 +44,8 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
             onError={handleImageError}
           />
           <div className='movie-details'>
-            <p>
-              <strong>Year:</strong> {movie.year}
-            </p>
-            <p>
-              <strong>Rating:</strong> {movie.rating}
-            </p>
+            <p>{movie.year}</p>
+            <p>{movie.rating}</p>
           </div>
           <p>{movie.title}</p>
         </div>
@@ -117,22 +113,22 @@ const Categories = () => {
       : categorizedMovies.get(selectedGenre) || [];
 
   return (
-    <main>
-      <NavBar />
+    <div className="wrapper">
+        <NavBar />
+        <main className='categories-page'>
+          <div className='categories-header'>
+            <h1>Categories</h1>
+            <BurgerMenu genres={genres} onSelectGenre={handleSelectGenre} />
+          </div>
 
-      <div className='categories-header'>
-        <h1>Categories</h1>
-        <BurgerMenu genres={genres} onSelectGenre={handleSelectGenre} />
-      </div>
+          <h2>{selectedGenre === 'All' ? 'All Movies' : selectedGenre}</h2>
 
-      <h2>{selectedGenre === 'All' ? 'All Movies' : selectedGenre}</h2>
-
-      <div className='movies-container'>
-        <MovieList movies={filteredMovies} />
-      </div>
-
-      <Footer />
-    </main>
+          <div className='movies-container'>
+            <MovieList movies={filteredMovies} />
+          </div>
+        </main>
+        <Footer />
+    </div>
   );
 };
 
