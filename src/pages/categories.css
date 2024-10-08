@@ -1,3 +1,8 @@
+.categories-page {
+  width: 80%;
+  margin: 0 auto;
+}
+
 .categories-header {
   display: flex;
   justify-content: space-between;
@@ -24,7 +29,6 @@
   right: 0;
   background-color: rgb(185, 172, 172);
   border: 1px solid #ccc;
-  
   z-index: 1000;
 }
 
@@ -48,11 +52,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px;
   padding: 10px;
-  border: 1px solid #ccc;
   border-radius: 8px;
- 
 }
 
 .movie-card img {
@@ -64,11 +65,11 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 10px;
 }
 
-.movies-container {
-  margin-top: 20px;
+.categories-movie__link {
+  color: #fff;
+  text-decoration: none;
 }
 
 .movies-list {
@@ -77,28 +78,11 @@
   justify-content: flex-start;
 }
 
-@media (min-width: 768px) {
-  .categories-header {
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .burger-menu {
-    display: block;
-  }
-  
-  .movies-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
-
-  .movie-card {
-    width: 200px;
-  }
-}
-
 @media (max-width: 767px) {
+  .categories-page {
+    width: 100%;
+  }
+
   .categories-header {
     flex-direction: row;
     justify-content: space-between;
@@ -120,5 +104,7 @@
 
   .movie-card {
     width: 100%;
+    padding: 0px;
+    font-size: 0.8rem;
   }
 }

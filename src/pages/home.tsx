@@ -33,21 +33,16 @@ const Home = () => {
   }, []);
 
   return (
-    <>
-      <section className="home-page">
-        <NavBar />
-        <main className="home-page__main">
-          <h1>Trending</h1>
-          <div className="trending-carousal">
-        <Carousal movies={trending} />
-
-        <h1>Recommended for You</h1>
-          <Carousal movies={recommended} />
-          </div>
-          </main>
-        <Footer />
-      </section>
-    </>
+    <div className="wrapper">
+      <NavBar />
+        <main className="home-page">
+            <h1>Trending</h1>
+            <Carousal movies={trending} />
+            <h1>Recommended for You</h1>
+            <Carousal movies={recommended} />
+        </main>
+      <Footer />
+    </div>
   );
 };
 

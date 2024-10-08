@@ -14,6 +14,11 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  color: #fff;
+}
+
+.carousel-movie__link {
+  text-decoration: none;
 }
 
 .control-arrow {
@@ -37,12 +42,17 @@
   background-color: rgba(0, 123, 255, 1);
 }
 
-@media (max-width: 430px) {
+@media (max-width: 768px) {
+  .carousel-container {
+    margin: 0 ;
+  }
+
   .legend_container {
+    margin-top: -15px;
     font-size: 0.8rem;
   }
+
   .control-arrow {
-    position: absolute;
-    height: 110px;
+    height: 510px;
   }
 }

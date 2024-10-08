@@ -4,8 +4,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #fff;
+  background-color: #000;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,9 +13,22 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   max-width: 1280px;
+  padding: 0 36px;
   margin: 0 auto;
-  padding: 0 1rem;
+
+  & h1 {
+    margin: 20px 0 0 20px;
+  }
 }
 
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    padding: 0;
+  }
+
+}

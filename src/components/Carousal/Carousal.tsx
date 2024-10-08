@@ -2,6 +2,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import './Carousal.css';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 interface Movie {
   title: string;
@@ -19,6 +20,24 @@ interface CarousalProps {
 }
 
 function Carousal({ movies }: CarousalProps) {
+  const [centerSlidePercentage, setCenterSlidePercentage] = useState(33.33); // Default for desktop
+
+  // Effect to handle window resize
+  useEffect(() => {
+    const handleResize = () => {
+      // Set centerSlidePercentage based on the window width
+      if (window.innerWidth <= 768) {
+        setCenterSlidePercentage(100); // Mobile view
+      } else {
+        setCenterSlidePercentage(33.33); // Desktop view
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []); 
+
   return (
     <div className='carousel-container'>
       <Carousel
@@ -28,16 +47,16 @@ function Carousal({ movies }: CarousalProps) {
         showIndicators={false}
         showThumbs={false}
         centerMode={true}
-        centerSlidePercentage={33.33}
+        centerSlidePercentage={centerSlidePercentage}
         showStatus={false}
       >
         {movies.map((movie, i) => (
-          <Link to={`/movieview/${movie.title}`} key={i}>
+          <Link to={`/movieview/${movie.title}`} key={i} className='carousel-movie__link'>
             <div className='movie_container' key={movie.title}>
               <img src={movie.thumbnail} alt={movie.title} />
               <div className='legend_container'>
-                <p>{movie.title}</p>
                 <p>{movie.year}</p>
+                <p>{movie.rating}</p>
               </div>
             </div>
           </Link>

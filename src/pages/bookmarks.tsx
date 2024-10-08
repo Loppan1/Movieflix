@@ -32,31 +32,32 @@ const Bookmarks = () => {
     };
 
     return (
-        <div className="bookmarks-page">
-            <NavBar />
-            <main className="bookmarks-page__main">
-                {bookmarks.length === 0 ? (
-                    <p>No movies bookmarked</p>
-                ) : (
-                    bookmarks.map((bookmark) => 
-                    <section className="bookmarks-card" key={bookmark.title}>
-                        <Link to={`/movieview/${bookmark.title}`} className="bookmarks-card__link">
-                            <img src={bookmark.thumbnail} className="bookmarks-card__img" />
-                            <article className="bookmarks-card__text">
-                                <h2 className="bookmarks-card__title">{bookmark.title}</h2>
-                                <div className="bookmarks-card__pair">
-                                    <h3 className="bookmarks-card__release">{bookmark.year}</h3>
-                                    <h3 className="bookmarks-card__rating">{bookmark.rating}</h3>
-                                </div>
-                            </article>
-                        </Link>
-                        <Button onClick={() => handleRemoveBookmark(bookmark.title)}>Remove</Button>
-                    </section>
-                    )
-                )}
-            </main>
-            <Footer />
-        </div>
+            <div className="wrapper">
+                <NavBar />
+                <main className="bookmarks-page">
+                    <h1>Bookmarks</h1>
+                    {bookmarks.length === 0 ? (
+                        <p>No movies bookmarked</p>
+                    ) : (
+                        bookmarks.map((bookmark) => 
+                        <section className="bookmarks-card" key={bookmark.title}>
+                            <Link to={`/movieview/${bookmark.title}`} className="bookmarks-card__link">
+                                <img src={bookmark.thumbnail} className="bookmarks-card__img" />
+                                <article className="bookmarks-card__text">
+                                    <h2 className="bookmarks-card__title">{bookmark.title}</h2>
+                                    <div className="bookmarks-card__pair">
+                                        <h3 className="bookmarks-card__release">{bookmark.year}</h3>
+                                        <h3 className="bookmarks-card__rating">{bookmark.rating}</h3>
+                                    </div>
+                                </article>
+                            </Link>
+                            <Button onClick={() => handleRemoveBookmark(bookmark.title)}>Remove</Button>
+                        </section>
+                        )
+                    )}
+                </main>
+                <Footer />
+            </div>
     )
 }
 
