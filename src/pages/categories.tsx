@@ -4,7 +4,7 @@ import movies from '../assets/movies.json';
 import Footer from '../components/Footer/Footer';
 import NavBar from '../components/NavBar/NavBar';
 import { Link } from 'react-router-dom';
-import { handleImageError } from '../utils';
+import { handleImageError } from '../utils/handleImageError';
 
 interface Movie {
   title: string;

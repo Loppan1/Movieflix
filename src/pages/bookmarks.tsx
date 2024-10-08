@@ -5,7 +5,7 @@ import NavBar from '../components/NavBar/NavBar';
 import Button from '../components/Button/Button';
 import movies from '../assets/movies.json';
 import './bookmarks.css';
-import { handleImageError } from '../utils';
+import { handleImageError } from '../utils/handleImageError';
 
 interface Movie {
   title: string;

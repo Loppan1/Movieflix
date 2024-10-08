@@ -2,7 +2,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import './Carousal.css';
 import { Link } from 'react-router-dom';
-import { handleImageError } from '../../utils';
+import { handleImageError } from '../../utils/handleImageError';
 
 interface Movie {
   title: string;
