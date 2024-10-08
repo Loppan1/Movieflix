@@ -4,6 +4,7 @@ import movies from '../assets/movies.json';
 import './movieView.css';
 import BookmarkButton from '../components/BookmarkButton/BookmarkButton';
 import Footer from '../components/Footer/Footer';
+import { handleImageError } from '../utils/handleImageError';
 
 function movieView() {
   const { movieid } = useParams<{ movieid: string }>();
@@ -27,6 +28,7 @@ function movieView() {
               className='movie-thumbnail'
               src={movie.thumbnail}
               alt='movie image'
+              onError={handleImageError}
             />
 
             <div className='movie-details-container'>

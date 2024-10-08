@@ -4,6 +4,7 @@ import movies from '../assets/movies.json';
 import Footer from '../components/Footer/Footer';
 import NavBar from '../components/NavBar/NavBar';
 import { Link } from 'react-router-dom';
+import { handleImageError } from '../utils/handleImageError';
 
 interface Movie {
   title: string;
@@ -37,7 +38,11 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
     <article>
       <Link to={`/movieview/${movie.title}`}>
         <div className='movie-card'>
-          <img src={movie.thumbnail} alt={`${movie.title} thumbnail`} />
+          <img
+            src={movie.thumbnail}
+            alt={`${movie.title} thumbnail`}
+            onError={handleImageError}
+          />
           <div className='movie-details'>
             <p>
               <strong>Year:</strong> {movie.year}
@@ -46,6 +51,7 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
               <strong>Rating:</strong> {movie.rating}
             </p>
           </div>
+          <p>{movie.title}</p>
         </div>
       </Link>
     </article>
