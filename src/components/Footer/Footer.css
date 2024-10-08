@@ -1,9 +1,10 @@
 .footer {
   width: 100%;
   border-top: 1px solid red;
+  margin-top: auto;
   color: #fff;
   text-align: center;
-  padding: 16px 1rem;
+  padding: 16px 0px 4px 0;
 }
 
 .footer-container {
@@ -12,15 +13,14 @@
   gap: 10px;
   padding: 0px;
   margin: 0 auto;
-
+  border: 1px solid red;
+  border-radius: 10px;
 }
 
 .footer-links {
   list-style-type: none;
   padding: 0;
   text-align: center;
-  border: 1px solid red;
-  border-radius: 10px;
 }
 
 .footer-link {

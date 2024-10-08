@@ -1,12 +1,25 @@
+.bookmarks-page {
+    margin: 0 auto;
+    width: 80%;
+}
+
 .bookmarks-card {
     width: 100%;
-    height: 90px;
+    height: 180px;
     display: flex;
     align-items: center;
-    margin: 22px 12px;
+    margin: 22px 0px;
 
     & button {
         margin-left: auto;
+    }
+
+    & h2 {
+        font-size: 1.6rem;
+    }
+
+    & h3 {
+        font-size: 1rem;
     }
 }
 
@@ -35,10 +48,21 @@
     gap: 18px;
 }
 
-.bookmarks-card__release {
-    font-size: 1rem;
-}
+@media only screen and (max-width: 768px) {
+    .bookmarks-page {
+        width: 100%;
+    }
 
-.bookmarks-card__rating {
-    font-size: 1rem;
-}
+    .bookmarks-card {
+        height: 90px;
+        padding: 0 8px;
+
+        & h2 {
+            font-size: 1rem;
+        }
+
+        & h3 {
+            font-size: 0.8rem;
+        }
+    }
+  }

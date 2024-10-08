@@ -1,21 +1,15 @@
 .home-page {
+  width: 80%;
+  margin: 0 auto;
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.home-page__main {
-  width: 80%;
-  margin: 0 auto;
-  margin-bottom: 30px;
-  margin-top: 30px;
-}
+
  h1 {
   font-size: 2rem;
   text-align: left;
-}
-.trending-carousal {
-  margin-bottom: 50px; /* Increase to create more space below the movie name */
 }
 
 
@@ -25,10 +19,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-
-  .home-page__main {
     width: 100%;
   }
-
 }

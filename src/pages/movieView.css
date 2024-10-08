@@ -1,9 +1,12 @@
 .media-view-page {
   display: flex;
   min-height: 100vh;
+  width: 80%;
+  margin: 0 auto;
   flex-direction: column;
   align-items: center;
 }
+
 .movie-view-section {
   display: flex;
   flex-direction: column;
@@ -11,27 +14,23 @@
   margin-bottom: 32px;
   width: 100%;
 }
+
 .movieview-container {
   padding: 0;
-  height: 100%;
+  height: 600px;
   display: flex;
 }
+
 .movie-details-container {
   display: flex;
   flex-direction: column;
-  padding-left: 8px;
+  margin: 16px 0 0 16px;
   gap: 8px;
 }
 
 .movie-thumbnail {
-  width: 50%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
-}
-
-h1 {
-  margin: 0;
-  font-size: 32px;
 }
 
 .movie-details-container p {
@@ -45,6 +44,7 @@ h1 {
 
 @media (max-width: 768px) {
   .movieview-container {
+    height: 100%;
     flex-direction: column;
     align-self: center;
   }
@@ -56,6 +56,7 @@ h1 {
   .movie-details-container {
     padding-left: 0;
   }
+
   .movie-view-section {
     display: flex;
     flex-direction: column;

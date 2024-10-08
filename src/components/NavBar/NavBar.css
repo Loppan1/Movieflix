@@ -19,5 +19,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
+  gap: 32px;
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-bar {
+    padding: 12px 0 12px 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
 }
