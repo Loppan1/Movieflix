@@ -40,13 +40,15 @@ function SearchBar() {
           value={value}
         />
       </div>
-     
-        {searchedMovies.map((movie)=>(
-          <div>
-            {movie.title}
-          </div>
-        ))}
-  
+      {value && searchedMovies.length > 0 && (
+        <div className='searchbar-results'>
+          {searchedMovies.map((movie) => (
+            <div key={movie.title}> {/* Add a unique key for each movie */}
+              {movie.title}
+            </div>
+          ))}
+        </div>
+      )}
     </form>
   );
 }
