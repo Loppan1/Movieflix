@@ -17,16 +17,16 @@ interface Movie {
   isTrending?: boolean;
 }
 
+const fuse = new Fuse(movies, {
+  keys: ["title", "genre", "actors"],
+  includeScore: true,
+  threshold: 0.3,
+});
+
 function SearchBar() {
   const [value, setValue] = useState<string>("");
   const [searchedMovies, setSearchedMovies] = React.useState<Movie[]>([]);
   const navigate = useNavigate();
-
-  const fuse = new Fuse(movies, {
-    keys: ["title", "genre", "actors"],
-    includeScore: true,
-    threshold: 0.3,
-  });
 
   useEffect(() => {
     if (value.length > 0) {
