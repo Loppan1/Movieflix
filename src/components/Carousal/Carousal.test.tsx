@@ -2,6 +2,8 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { it, expect } from 'vitest';
 import Carousal from './Carousal';
+import '@testing-library/jest-dom';
+
 
 const mockMovies = [
   {
@@ -36,4 +38,3 @@ it('should navigate to the correct movie detail page on thumbnail click', () => 
     expect(inceptionLink).toHaveAttribute('href', '/movieview/Inception');
   });
   
-
