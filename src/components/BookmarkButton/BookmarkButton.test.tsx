@@ -1,4 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
 import { describe, it, expect, beforeEach } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
 import BookmarkButton from './BookmarkButton';
@@ -41,7 +42,7 @@ describe('BookmarkButton', () => {
       expect(button.textContent).toBe('Bookmark');
     });
   
-    it('should toggle bookmark status on click', () => {
+    it('should toggle bookmark status on click', async () => {
       renderWithRouter(<BookmarkButton title="Test Movie" />);
       const button = screen.getByRole('button');
       
@@ -49,11 +50,11 @@ describe('BookmarkButton', () => {
       expect(button.textContent).toBe('Bookmark');
   
       // Click to bookmark
-      fireEvent.click(button);
+      await userEvent.click(button);
       expect(button.textContent).toBe('Remove Bookmark');
   
       // Click to remove bookmark
-      fireEvent.click(button);
+      await userEvent.click(button);
       expect(button.textContent).toBe('Bookmark');
     });
   
@@ -67,26 +68,26 @@ describe('BookmarkButton', () => {
       expect(button.textContent).toBe('Remove Bookmark');
     });
   
-    it('should add bookmark to localStorage', () => {
+    it('should add bookmark to localStorage', async () => {
       renderWithRouter(<BookmarkButton title="New Movie" />);
       const button = screen.getByRole('button');
   
       // Click to bookmark
-      fireEvent.click(button);
+      await userEvent.click(button);
   
       // Check localStorage
       const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
       expect(bookmarks).toEqual([{ title: 'New Movie' }]);
     });
   
-    it('should remove bookmark from localStorage', () => {
+    it('should remove bookmark from localStorage', async () => {
       localStorage.setItem('bookmarks', JSON.stringify([{ title: 'Test Movie' }]));
   
       renderWithRouter(<BookmarkButton title="Test Movie" />);
       const button = screen.getByRole('button');
   
       // Click to remove bookmark
-      fireEvent.click(button);
+      await userEvent.click(button);
   
       // Check localStorage
       const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
