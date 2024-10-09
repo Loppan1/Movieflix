@@ -11,7 +11,6 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@testing-library/user-event": "^14.5.2",
     "dependencies": "^0.0.1",
     "fuse.js": "^7.0.0",
     "instead": "^1.0.3",
@@ -29,6 +28,7 @@
     "@eslint/js": "^9.9.0",
     "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/react-slick": "^0.23.13",
