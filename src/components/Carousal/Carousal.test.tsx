@@ -1,9 +1,8 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { it, expect } from 'vitest';
 import Carousal from './Carousal';
 import '@testing-library/jest-dom';
-
 
 const mockMovies = [
   {
@@ -26,15 +25,44 @@ const mockMovies = [
   },
 ];
 
-it('should navigate to the correct movie detail page on thumbnail click', () => {
-    render(
-      <MemoryRouter>
-        <Carousal movies={mockMovies} />
-      </MemoryRouter>
-    );
+it('should navigate to the correct movie detail page on thumbnail click', async () => {
+  render(
+    <MemoryRouter>
+      <Carousal movies={mockMovies} />
+    </MemoryRouter>
+  );
+
+  const inceptionImages = await waitFor(() => screen.getAllByAltText('Inception'));
+
+ 
+  const inceptionLink = inceptionImages[0].closest('a');
   
-    const inceptionLinks = screen.getAllByText(/inception/i);
-    const inceptionLink = inceptionLinks[0].closest('a');  
-    expect(inceptionLink).toHaveAttribute('href', '/movieview/Inception');
-  });
-  
+  expect(inceptionLink).toHaveAttribute('href', '/movieview/Inception');
+});
+it('should render all movies in the carousel', async () => {
+  render(
+    <MemoryRouter>
+      <Carousal movies={mockMovies} />
+    </MemoryRouter>
+  );
+
+ 
+  for (const movie of mockMovies) {
+    const movieImages = await waitFor(() => screen.getAllByAltText(movie.title));
+    expect(movieImages[0]).toBeInTheDocument(); 
+  }
+});
+it('should navigate to the correct movie detail pages for all movies', async () => {
+  render(
+    <MemoryRouter>
+      <Carousal movies={mockMovies} />
+    </MemoryRouter>
+  );
+
+  for (const movie of mockMovies) {
+    // Get all elements with the movie title as the alt text and use the first one
+    const movieImages = await waitFor(() => screen.getAllByAltText(movie.title));
+    const movieLink = movieImages[0].closest('a'); // Ensure you're selecting the first instance
+    expect(movieLink).toHaveAttribute('href', `/movieview/${movie.title}`);
+  }
+});
