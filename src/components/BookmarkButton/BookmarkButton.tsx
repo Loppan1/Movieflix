@@ -31,11 +31,11 @@ const BookmarkButton: React.FC<BookmarkButtonProps> = ({ title }) => {
 
 
     return (
-        <>
+        <div className="bookmark-button">
         <Button onClick={handleBookmark}>
             {isBookmarked ? 'Remove Bookmark' : 'Bookmark'}
         </Button>
-        </>
+        </div>
     )
 }
 
