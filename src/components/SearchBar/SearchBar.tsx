@@ -1,8 +1,10 @@
-import { Search } from 'lucide-react';
-import './SearchBar.css';
-import React from 'react';
-import movies from "../../assets/movies.json"
-import {useEffect, useState} from 'react';
+import { Search } from "lucide-react";
+import "./SearchBar.css";
+import React from "react";
+import movies from "../../assets/movies.json";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Fuse from "fuse.js";
 
 interface Movie {
   title: string;
@@ -15,39 +17,52 @@ interface Movie {
   isTrending?: boolean;
 }
 
+const fuse = new Fuse(movies, {
+  keys: ["title", "genre", "actors"],
+  includeScore: true,
+  threshold: 0.3,
+});
+
 function SearchBar() {
-  const [value, setValue] = useState<string>('');
+  const [value, setValue] = useState<string>("");
   const [searchedMovies, setSearchedMovies] = React.useState<Movie[]>([]);
-  useEffect (() =>{
-    if (value.length>0){
-   const searchResult = movies.filter((movie)=>movie.title.toLowerCase().includes(value.toLowerCase())
-   )
-   setSearchedMovies(searchResult);
-    }
-    else {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (value.length > 0) {
+      // Perform the fuzzy search
+      const results = fuse.search(value);
+      const matchedMovies = results.map((result) => result.item);
+      setSearchedMovies(matchedMovies);
+    } else {
       setSearchedMovies([]);
     }
-  },[value])
+  }, [value, fuse]);
+
   return (
-    <form className='searchbar'>
-      <div className='searchbar-container'>
-        <Search size='16' className='searchbar-icon' />
+    <form className="searchbar">
+      <div className="searchbar-container">
+        <Search size="16" className="searchbar-icon" />
         <input
-          className='searchbar-container__input'
-          type='search'
-          placeholder='Search....'
+          className="searchbar-container__input"
+          type="search"
+          placeholder="Search...."
           onChange={(e) => setValue(e.target.value)}
           value={value}
         />
       </div>
-      {value && searchedMovies.length > 0 && (
-        <div className='searchbar-results'>
-          {searchedMovies.map((movie) => (
-            <div key={movie.title}> {/* Add a unique key for each movie */}
-              {movie.title}
-            </div>
-          ))}
-        </div>
+      {searchedMovies.length === 0 && value.length > 0 ? (
+        <div>No movies found</div>
+      ) : (
+        searchedMovies.map((movie) => (
+          <div
+            className="search_suggestion"
+            key={movie.title}
+            onClick={() => navigate(`/movieview/${movie.title}`)}
+          >
+            {movie.title}
+          </div>
+        ))
       )}
     </form>
   );

@@ -40,7 +40,7 @@ function Carousal({ movies }: CarousalProps) {
   }, []); 
 
   return (
-    <div className='carousel-container'>
+    <div className="carousel-container">
       <Carousel
         showArrows={true}
         autoPlay={false}
