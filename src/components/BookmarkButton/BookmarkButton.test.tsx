@@ -37,13 +37,13 @@ describe('BookmarkButton', () => {
     };
   
     it('should render Bookmark button initially', () => {
-      renderWithRouter(<BookmarkButton title="Test Movie" />);
+      renderWithRouter(<BookmarkButton title="Test Movie" type='text'/>);
       const button = screen.getByRole('button');
       expect(button.textContent).toBe('Bookmark');
     });
   
     it('should toggle bookmark status on click', async () => {
-      renderWithRouter(<BookmarkButton title="Test Movie" />);
+      renderWithRouter(<BookmarkButton title="Test Movie" type='text'/>);
       const button = screen.getByRole('button');
       
       // Initially not bookmarked
@@ -61,7 +61,7 @@ describe('BookmarkButton', () => {
     it('should remember bookmark status from localStorage', () => {
       localStorage.setItem('bookmarks', JSON.stringify([{ title: 'Test Movie' }]));
   
-      renderWithRouter(<BookmarkButton title="Test Movie" />);
+      renderWithRouter(<BookmarkButton title="Test Movie" type='text'/>);
       const button = screen.getByRole('button');
   
       // Should be bookmarked based on localStorage
@@ -69,7 +69,7 @@ describe('BookmarkButton', () => {
     });
   
     it('should add bookmark to localStorage', async () => {
-      renderWithRouter(<BookmarkButton title="New Movie" />);
+      renderWithRouter(<BookmarkButton title="New Movie" type='text'/>);
       const button = screen.getByRole('button');
   
       // Click to bookmark
@@ -83,7 +83,7 @@ describe('BookmarkButton', () => {
     it('should remove bookmark from localStorage', async () => {
       localStorage.setItem('bookmarks', JSON.stringify([{ title: 'Test Movie' }]));
   
-      renderWithRouter(<BookmarkButton title="Test Movie" />);
+      renderWithRouter(<BookmarkButton title="Test Movie" type='text'/>);
       const button = screen.getByRole('button');
   
       // Click to remove bookmark

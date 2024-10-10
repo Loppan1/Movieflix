@@ -4,6 +4,7 @@ import './Carousal.css';
 import { Link } from 'react-router-dom';
 import { handleImageError } from '../../utils/handleImageError';
 import { useEffect, useState } from 'react';
+import BookmarkButton from '../BookmarkButton/BookmarkButton';
 
 interface Movie {
   title: string;
@@ -52,19 +53,21 @@ function Carousal({ movies }: CarousalProps) {
         showStatus={false}
       >
         {movies.map((movie, i) => (
-          <Link to={`/movieview/${movie.title}`} key={i} className='carousel-movie__link'>
-            <div className='movie_container' key={movie.title}>
+          
+            <div className='movie_container' key={i}>
+            <BookmarkButton title={movie.title} type="picture" />
+            <Link to={`/movieview/${movie.title}`} className='carousel-movie__link'>
               <img
                 src={movie.thumbnail}
                 alt={movie.title}
                 onError={handleImageError}
               />
+            </Link>
               <div className='legend_container'>
                 <p>{movie.year}</p>
                 <p>{movie.rating}</p>
               </div>
             </div>
-          </Link>
         ))}
       </Carousel>
     </div>

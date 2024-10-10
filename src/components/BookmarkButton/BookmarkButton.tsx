@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import Button from "../Button/Button";
+import bookRemove from "../../assets/book-red.png"
+import bookAdd from "../../assets/book-redblack.png"
+import "./BookmarkButton.css"
 
 interface BookmarkButtonProps {
     title: string;
+    type: string
   }
 
-const BookmarkButton: React.FC<BookmarkButtonProps> = ({ title }) => {
+const BookmarkButton: React.FC<BookmarkButtonProps> = ({ title, type }) => {
     const [isBookmarked, setIsBookmarked] = useState(false);
 
     useEffect(() => {
@@ -29,12 +33,16 @@ const BookmarkButton: React.FC<BookmarkButtonProps> = ({ title }) => {
         setIsBookmarked(!isBookmarked); // Toggle the bookmark status
     }
 
+    let remove = (type === "text") ? 
+        <Button onClick={handleBookmark}>Remove Bookmark</Button> : 
+        <button onClick={handleBookmark} className="bookmark-button"><img src={bookRemove} className="bookmark-image"  /></button>;
+    let add = (type === "text") ? 
+        <Button onClick={handleBookmark}>Bookmark</Button> :
+        <button onClick={handleBookmark} className="bookmark-button"><img src={bookAdd} className="bookmark-image"  /></button>;
 
     return (
-        <div className="bookmark-button">
-        <Button onClick={handleBookmark}>
-            {isBookmarked ? 'Remove Bookmark' : 'Bookmark'}
-        </Button>
+        <div>
+            {isBookmarked ? remove : add}
         </div>
     )
 }
