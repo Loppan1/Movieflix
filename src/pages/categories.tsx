@@ -47,7 +47,6 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
             <p>{movie.year}</p>
             <p>{movie.rating}</p>
           </div>
-          <p>{movie.title}</p>
         </div>
       </Link>
     </article>
