@@ -41,9 +41,9 @@ const BookmarkButton: React.FC<BookmarkButtonProps> = ({ title, type }) => {
         <button onClick={handleBookmark} className="bookmark-button"><img src={bookAdd} className="bookmark-image"  /></button>;
 
     return (
-        <div>
-            {isBookmarked ? remove : add}
-        </div>
+        <>
+        {isBookmarked ? remove : add}
+        </>
     )
 }
 
