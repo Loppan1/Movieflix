@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { handleImageError } from '../../utils/handleImageError';
 import './MovieCard.css'
+import BookmarkButton from '../BookmarkButton/BookmarkButton';
 
 interface Movie {
     title: string;
@@ -24,6 +25,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, type }) => {
 
     return (
         <article>
+          <BookmarkButton title={movie.title} type='picture'/>
           <Link to={`/movieview/${movie.title}`} className='movie__link'>
             <div className={`movie-card ${cardClass}`}>
               <img

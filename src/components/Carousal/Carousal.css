@@ -1,7 +1,10 @@
 .carousel-container {
   width: 80%;
   margin: 0 auto;
-  position: relative;
+
+  & .bookmark-button {
+    left: 0;
+  }
 }
 
 .movie_container {

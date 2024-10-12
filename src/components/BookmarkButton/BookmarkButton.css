@@ -3,12 +3,11 @@
     border: 0;
     border-radius: 50%;
     position: absolute;
-    top: 24px;
-    right: 12px;
     width: 48px;
     z-index: 10;
 }
 
 .bookmark-image {
+    width: 100%;
     z-index: 1000;
 }
