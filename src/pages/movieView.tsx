@@ -42,7 +42,7 @@ function movieView() {
                   <strong>Synopsis</strong> {movie.synopsis}
                 </p>
                 <div className='button-container'>
-                  <BookmarkButton title={movie.title} />
+                  <BookmarkButton title={movie.title} type="text" />
                 </div>
               </div>
             </aside>
