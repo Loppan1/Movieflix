@@ -1,0 +1,25 @@
+.movie-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .categories {
+    & img {
+        max-width: 150px;
+        border-radius: 8px;
+      }
+  }
+
+  .movie-details {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .movie__link {
+    color: #fff;
+    text-decoration: none;
+  }

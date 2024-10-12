@@ -1,10 +1,8 @@
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import './Carousal.css';
-import { Link } from 'react-router-dom';
-import { handleImageError } from '../../utils/handleImageError';
 import { useEffect, useState } from 'react';
-import BookmarkButton from '../BookmarkButton/BookmarkButton';
+import MovieCard from '../MovieCard/MovieCard'; // Used same component as Categories
 
 interface Movie {
   title: string;
@@ -52,22 +50,12 @@ function Carousal({ movies }: CarousalProps) {
         centerSlidePercentage={centerSlidePercentage}
         showStatus={false}
       >
-        {movies.map((movie, i) => (
-          
-            <div className='movie_container' key={i}>
-            <BookmarkButton title={movie.title} type="picture" />
-            <Link to={`/movieview/${movie.title}`} className='carousel-movie__link'>
-              <img
-                src={movie.thumbnail}
-                alt={movie.title}
-                onError={handleImageError}
-              />
-            </Link>
-              <div className='legend_container'>
-                <p>{movie.year}</p>
-                <p>{movie.rating}</p>
-              </div>
-            </div>
+      {movies.map((movie) => (
+      <MovieCard 
+        key={movie.title} 
+        movie={movie} 
+        type="carousal"
+        />
         ))}
       </Carousel>
     </div>

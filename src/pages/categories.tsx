@@ -3,8 +3,7 @@ import './categories.css';
 import movies from '../assets/movies.json';
 import Footer from '../components/Footer/Footer';
 import NavBar from '../components/NavBar/NavBar';
-import { Link } from 'react-router-dom';
-import { handleImageError } from '../utils/handleImageError';
+import MovieCard from '../components/MovieCard/MovieCard'; // Moved to component for reusability
 
 interface Movie {
   title: string;
@@ -33,31 +32,11 @@ const categorizeMoviesByGenre = (movies: Movie[]): Map<string, Movie[]> => {
   return genresMap;
 };
 
-const MovieCard = ({ movie }: { movie: Movie }) => {
-  return (
-    <article>
-      <Link to={`/movieview/${movie.title}`} className='categories-movie__link'>
-        <div className='movie-card'>
-          <img
-            src={movie.thumbnail}
-            alt={`${movie.title} thumbnail`}
-            onError={handleImageError}
-          />
-          <div className='movie-details'>
-            <p>{movie.year}</p>
-            <p>{movie.rating}</p>
-          </div>
-        </div>
-      </Link>
-    </article>
-  );
-};
-
 const MovieList = ({ movies }: { movies: Movie[] }) => {
   return (
     <div className='movies-list'>
       {movies.map((movie) => (
-        <MovieCard key={movie.title} movie={movie} />
+        <MovieCard key={movie.title} movie={movie} type='categories' />
       ))}
     </div>
   );
